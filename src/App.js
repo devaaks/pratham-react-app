@@ -11,10 +11,24 @@ class App extends Component {
       { name: 'Doug', age: 12 },
     ]
   }
+
+  hideAllName = () => {
+    const modifiedPerson = [ ...this.state.person].map(person => {
+      person.name = 'xxxxxxx';
+      person.age = 'xx';
+      return person;
+    });
+    this.setState(modifiedPerson);
+  }
+
   render() {
     var personComponents=[];
     for ( var i = 0; i < this.state.person.length; i++){
-      personComponents.push(<Person name={this.state.person[i].name} age={this.state.person[i].age} />);
+      personComponents.push(<Person 
+          name={this.state.person[i].name} 
+          age={this.state.person[i].age} 
+          key={i}
+        />);
     }
 
     return (
@@ -26,6 +40,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={this.hideAllName}>Hide Names</button>
         {personComponents}
       </div>
     );
