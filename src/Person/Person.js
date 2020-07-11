@@ -1,7 +1,7 @@
 import React from 'react';
 
 const person = (props) => {
-    return <p>Name: {props.name}</p>
+    return <p>Name: <strong>{props.name}</strong> <small>Age:{props.age}</small></p>
 };
 
 export default person;
