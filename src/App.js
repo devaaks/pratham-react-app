@@ -12,6 +12,10 @@ const app = props => {
     ]
   });
 
+  const [ showState, setShowState ] = useState({
+    show: true
+  });
+
   const hideAllName = () => {
     const modifiedPerson = [ ...personState.person].map(person => {
       person.name = 'xxxxxxx';
@@ -19,6 +23,12 @@ const app = props => {
       return person;
     });
     setPersonState({ person: modifiedPerson});
+  }
+
+  const toggleDisplay = () => {
+    setShowState({
+      show: !showState.show
+    })
   }
   
   var personComponents=[];
@@ -39,8 +49,9 @@ const app = props => {
       <p className="App-intro">
         To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      <button onClick={hideAllName}>Hide Names</button>
-      {personComponents}
+      <button onClick={hideAllName}>Hide Data</button>
+      <button onClick={toggleDisplay}>Hide Banner</button>
+      {showState.show ? personComponents : null}
     </div>
   );
 }
