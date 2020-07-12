@@ -20,9 +20,7 @@ const app = props => {
     });
     setPersonState({ person: modifiedPerson});
   }
-
-  console.log({ personState });
-
+  
   var personComponents=[];
   for ( var i = 0; i < personState.person.length; i++){
     personComponents.push(<Person 
